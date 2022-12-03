@@ -2,9 +2,15 @@ package bridge.controller;
 
 import bridge.model.User;
 
+import java.util.Map;
+
 public class GameResult {
     public static final int PASS = 1;
     public static final int FAIL = -2;
+    private Map<Integer, String> MessageAccessor = Map.of(
+            PASS, "성공",
+            FAIL, "실패"
+    );
 
     private final User user;
     private final int resultNumber;
@@ -25,10 +31,7 @@ public class GameResult {
     }
 
     public String getPassFailMessage() {
-        if(resultNumber == PASS){
-            return "성공";
-        }
-        return "실패";
+        return MessageAccessor.get(resultNumber);
     }
 
     public int getAttemptCount() {
