@@ -1,5 +1,6 @@
 package bridge;
 
+import bridge.constant.DirectionTable;
 import bridge.constant.GameConstant;
 import bridge.controller.MapConverter;
 import bridge.exception.IllegalArgument;
@@ -20,7 +21,7 @@ public class BridgeMaker {
 
         return Stream.generate(bridgeNumberGenerator::generate)
                 .limit(size)
-                .map(MapConverter::getDirection)
+                .map(DirectionTable::getInitialFromNumber)
                 .collect(Collectors.toList());
     }
 
